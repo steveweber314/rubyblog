@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 
 	def new
 		@article = Article.new
+	 
 	end
 
 	def create
@@ -26,6 +27,23 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 	end
 
+	def upvote
+		@article = Article.find(params[:id])
+		@article.rating += 1
+	 	if @article.save
+		    render :json => { :rating => 3 }
+ 
+		end
+	end
+
+	def downvote
+		@article = Article.find(params[:id])
+		@article.rating -= 1
+	 	if @article.save
+		    render @article.to_json
+		end
+	end
+
 	def update
 		@article = Article.find(params[:id])
 
@@ -37,6 +55,8 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
+
+
 		@article = Article.find(params[:id])
 		@article.destroy
 
@@ -45,6 +65,6 @@ class ArticlesController < ApplicationController
 
 	private
 		def article_params
-		params.require(:article).permit(:title, :text)
+		params.require(:article).permit(:title, :text, :image)
 	end
 end

@@ -14,3 +14,23 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+ 
+
+	function upvote(id)
+	{ 
+		var result = $.ajax( "articles/" + id + "/upvote" )
+			.done(function(result) {
+		 	$("#rating_"+id).html(result.rating);
+		}) 
+	}
+
+
+	function downvote(id)
+	{
+		var result = $.ajax( "articles/" + id + "/downvote" )
+			.done(function(result) {
+		 	$("#rating_"+id).html(result.rating);
+		}) 
+	}
+

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
 resources :articles do
+	member do 
+		get 'upvote'
+		get 'downvote'
+	end
   resources :comments
 end
+
+
 
   get 'welcome/index'
 

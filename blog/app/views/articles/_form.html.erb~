@@ -1,4 +1,6 @@
+
 <%= form_for @article, :html => { :multipart => true } do |f| %>
+
   <% if @article.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@article.errors.count, "error") %> prohibited
@@ -10,6 +12,16 @@
     </ul>
   </div>
   <% end %>
+
+ <div style="float:left;">
+	<%if @article.image? %>
+		<%= image_tag @article.image.url %>
+	<br/>
+		<%= link_to @article.image.url, @article.image.url %>
+	<% end %>
+</div>
+
+<div style="float:right;">
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -28,4 +40,6 @@
   <p>
     <%= f.submit %>
   </p>
+
+</div>
 <% end %>
