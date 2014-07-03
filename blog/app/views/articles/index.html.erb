@@ -24,8 +24,9 @@ th { background-color:#CCCCCC; }
 	<td>
 		 <h2 id="rating_<%=article.id%>"><%= article.rating %></h2>	
 
-	<a href="" onclick="upvote(<%=article.id%>); return false;">Upvote</a>
-	<a href="" onclick="downvote(<%=article.id%>); return false;">Downvote</a>
+	<a href="" onclick="upvote(<%=article.id%>); return false;"><i class="fa fa-thumbs-up"></i>Upvote</a>
+	<br>
+	<a href="" onclick="downvote(<%=article.id%>); return false;"><i class="fa fa-thumbs-down"></i>Downvote</a>
  
 	</td>
 
@@ -36,9 +37,9 @@ th { background-color:#CCCCCC; }
 	</td>
 	<td><%= article.title %></td>
 	<td><%= article.text %></td>
-	<td><%= link_to 'Show', article_path(article) %></td>
-	<td><%= link_to 'Edit', edit_article_path(article) %></td>
-    	<td><%= link_to 'Delete', article_path(article),
+	<td><i class="fa fa-camera"></i><%= link_to 'Show', article_path(article) %></td>
+	<td><i class="fa fa-edit"></i><%= link_to 'Edit', edit_article_path(article) %></td>
+    	<td><i class="fa fa-eraser"></i><%= link_to 'Delete', article_path(article),
                     method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
